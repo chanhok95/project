@@ -41,7 +41,6 @@
     <fullyQualifiedTypeName name="org.apache.poi.hssf.usermodel.HSSFRow"/>
     <fullyQualifiedTypeName name="org.apache.poi.hssf.usermodel.HSSFCell"/>
     <fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Cell"/>
-    <fullyQualifiedTypeName name="domain.EmpBean"/>
     <fullyQualifiedTypeName name="domain.DeptData"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="view.ExcelPrint"/>
@@ -54,5 +53,9 @@
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.Driver"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="javax.naming.spi.DirStateFactory.Result"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="domain.EmpBean"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>
