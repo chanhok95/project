@@ -1,0 +1,19 @@
+package interfacesample;
+
+public class  DaoExample  {
+
+	public static void dbwork(DataAccessObject dao) {
+		((OracleDao) dao).select();
+		((OracleDao) dao).update();
+		((OracleDao) dao).delete();
+		((OracleDao) dao).select();
+		((MysqlDao) dao).select();
+		((MysqlDao) dao).update();
+		((MysqlDao) dao).delete();
+		((MysqlDao) dao).select();
+	}
+	public static void main(String[] args) {
+		dbwork(new OracleDao());
+		dbwork(new MysqlDao());
+	}
+}

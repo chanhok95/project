@@ -1,0 +1,6 @@
+package interfacesample;
+
+public interface OracleDao {
+
+	
+}

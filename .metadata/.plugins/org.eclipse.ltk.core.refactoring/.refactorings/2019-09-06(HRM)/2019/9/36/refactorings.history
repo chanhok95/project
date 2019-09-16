@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 3 packages to &apos;HRM_004/src&apos;&#x0D;&#x0A;- Original project: &apos;2019-09-06(HRM)&apos;&#x0D;&#x0A;- Destination element: &apos;HRM_004/src&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     2019-09-06(HRM)/src/domain&#x0D;&#x0A;     2019-09-06(HRM)/src/menu&#x0D;&#x0A;     2019-09-06(HRM)/src/view" description="Copy packages" destination="=HRM_004/src" element1="/src&lt;domain" element2="/src&lt;menu" element3="/src&lt;view" flags="589830" fragments="3" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1567732288323" version="1.0"/>
+</session>

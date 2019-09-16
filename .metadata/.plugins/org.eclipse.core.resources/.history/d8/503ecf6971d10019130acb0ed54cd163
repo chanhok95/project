@@ -1,0 +1,23 @@
+package interfacesample;
+
+public class OracleDao implements DataAccessObject {
+	public static void select() {
+		// TODO Auto-generated method stub
+		System.out.println("oracle DB에서 검색");
+	}
+
+	public static void insert() {
+		// TODO Auto-generated method stub
+		System.out.println("oracle DB에서 삽입");
+	}
+
+	public static void update() {
+		// TODO Auto-generated method stub
+		System.out.println("oracle  DB에서 수정");
+	}
+
+	public static void delete() {
+		// TODO Auto-generated method stub
+		System.out.println("oracle  db에서 삭제");
+	}
+}

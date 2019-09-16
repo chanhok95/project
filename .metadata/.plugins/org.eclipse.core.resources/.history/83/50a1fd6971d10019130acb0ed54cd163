@@ -1,0 +1,11 @@
+package interfacesample;
+
+public interface DataAccessObject  {
+	public static void dbwork() {
+		new MysqlDao();
+		new OracleDao();
+	}
+}
+
+
+
