@@ -11,11 +11,11 @@ import domain.EmpBean;
 import domain.EmpData;
 
 public class DeptMenu extends Commenmethod {
-	List<DeptBean> ar_db = null; // 부서전체정보 출력안되는이유★ all_vieww ar_db에서 null값으로인해
+//	List<DeptBean> ar_db = null; // 부서전체정보 출력안되는이유★ all_vieww ar_db에서 null값으로인해
 
 	public void five_menu() {
 		
-		ar_db = new DeptData().def2_data(); // 부서전체정보 출력안되는이유 ★설정
+//		ar_db = new DeptData().def2_data(); // 부서전체정보 출력안되는이유 ★설정
 		// 5번 부서정보 조회 를 눌렀을시 다음 화면으로 넘어갈 1. 부서정보조회 2. 부서추가 3. 부서수정 4. 부서삭제 클릭시 이벤트
 		System.out.println("1.부서정보조회");
 		System.out.println("2.부서추가");
@@ -38,7 +38,9 @@ public class DeptMenu extends Commenmethod {
 			one_menu();
 //		}else if (menu.equals("2")) {
 //			two_menu();
-
+			
+		}else if (menu.equals("2")) {
+		
 		}
 
 	}
@@ -72,7 +74,7 @@ public class DeptMenu extends Commenmethod {
 				top_menu = false;
 			} else if (menu.equals("a")) {
 				SearchHR sh = new SearchHR();
-				sh.all_Vieww(ar_db);
+				sh.all_Vieww(new DeptData().def2_data());
 			} else if (menu.equals("b")) {
 				boolean code = true;
 				while (code) {
@@ -87,7 +89,7 @@ public class DeptMenu extends Commenmethod {
 					}
 					int i_deptno = Integer.parseInt(deptno); // int타입으로 변환해서 보여준다
 					List<DeptBean> db = null;
-					db = new DeptData().getEmp2(i_deptno, ar_db); // String empno -> int
+					db = new DeptData().getEmp2(i_deptno, db); // String empno -> int
 					new SearchHR().dept_View(db);
 					List<DeptBean> s_code = new SearchHR().dept_View(db);
 					if (s_code.equals("n")) {

@@ -4,6 +4,7 @@ import java.net.ConnectException;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -74,41 +75,41 @@ public class EmpData {
 //		 * return ar_eb3; // return 하나의 값만 반환가능 그러므로 그룹핑해야됨
 //		 */
 		// oracle db 에서 값을 받아온후 List에 추가하기
-		//connetion 생성
-		String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
-		String user = "scott";
-		String password = "tiger";
-		Connection con = null;
-				
-		try {
-			con = DriverManager.getConnection(url, user, password);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}					// connetion까지 묶이게되므로 con 만 따로 빼내어서 묶음
-		
+		// connetion 생성
+//		String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
+//		String user = "scott";
+//		String password = "tiger";
+//		Connection con = null;
+//				
+//		try {
+//			con = DriverManager.getConnection(url, user, password);
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}					// connetion까지 묶이게되므로 con 만 따로 빼내어서 묶음
+//		
+		Connection con = dbcon();
+
 		System.out.println("conn 객체:" + con);
 		// 쿼리문 실행시킬수 있도록 구조만들기
-		Statement stmt =  null;
-		//db결과값 저장객체를 선언하여 가져오기
+		Statement stmt = null;
+		// db결과값 저장객체를 선언하여 가져오기
 		ResultSet rs = null;
 		List<EmpBean> list = new ArrayList<EmpBean>();
-		
-		
+
 		try {
-			stmt=con.createStatement();
-			//select 실행시
+			stmt = con.createStatement();
+			// select 실행시
 			String sql = "SELECT empno,ename,mgr,job,hiredate,sal,comm,deptno FROM emp";
-			String sql2 = "WHERE empno= empno";
-			
+
 			rs = stmt.executeQuery(sql);
-			//insert,update,delete 실행시
+			// insert,update,delete 실행시
 //			stmt.executeUpdate("");
-			
-			//resultset 내에서부터 값을 조회해보기 iteratior방식
+
+			// resultset 내에서부터 값을 조회해보기 iteratior방식
 			int cnt = 0;
-		
-			while(rs.next()) {
+
+			while (rs.next()) {
 				EmpBean eb = new EmpBean();
 				eb.setEmpno(rs.getInt(1));
 				eb.setEname(rs.getString(2));
@@ -123,8 +124,7 @@ public class EmpData {
 //				System.out.println(rs.getInt(1));				// 두가지형태의 값으로 가져올수있음  인덱스 첫번째empno를 가져옴
 //				System.out.println(rs.getString(2));
 //			//				rs.getInt("empno");
-			
-				
+
 			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -132,20 +132,20 @@ public class EmpData {
 		} finally {
 
 			try {
-				if(rs!= null) {
-				rs.close();		//닫는것도 순서대로
+				if (rs != null) {
+					rs.close(); // 닫는것도 순서대로
 				}
-				if(stmt!= null) {
-				stmt.close();
+				if (stmt != null) {
+					stmt.close();
 				}
-				if(con!=null) {
-				con.close();
+				if (con != null) {
+					con.close();
 				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-				
+
 		}
 		return list;
 	}
@@ -153,18 +153,82 @@ public class EmpData {
 	// def_data()
 	// 특정 사원 정보조회후 값세팅하기 (def_data()에 갖고있는 초기화)
 	public Object getEmp(int empno) {
-		
+		Connection con = dbcon();
+		Statement stmt = null;
+		ResultSet rs = null;
+		EmpBean eb = null;
+		String sql = "SELECT empno,ename FROM emp WHERE empno = " + empno;
+
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(sql); // 순서가 바뀌면 nullpointerexcetion
+
+			if (rs.next()) {
+
+			} // 값이 검색이 되었을시
+			eb = new EmpBean();
+			eb.setEmpno(rs.getInt(1));
+			eb.setEname(rs.getString(2));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
 //		for (int i = 0; i < ar_eb.size(); i++) {
 //			if (ar_eb.get(i).getEmpno() == empno) {
 //				return ar_eb.get(i);
 //			}
 //		}
 
-		return null;
+		return eb;
 
 	}
 
-	public List<EmpBean> ins_emp(String empno, String ename, List<EmpBean> ar_eb) { // 사원추가
+	public int ins_emp(String empno, String ename, int mgr, double sal) { // 사원추가
+
+		Connection con = dbcon();
+		String sql = "INSERT INTO emp(empno,ename,mgr,sal) "; // values 때문에 " 한칸띄우고
+		String sql2 = "VALUES(?,?,?,?)";
+		int cnt = 0; // insert가 제대로 되었는지 확인하기위해
+		PreparedStatement pstmt = null;
+
+		try {
+			pstmt = con.prepareStatement(sql + sql2);
+			pstmt.setInt(1, Integer.parseInt(empno));
+			pstmt.setString(2, ename);
+			pstmt.setInt(3, mgr);
+			pstmt.setDouble(4, sal);
+			// insert문 실행
+			cnt = pstmt.executeUpdate(); // 프리페어드스테이먼트는 매개값을 주지않고
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // 먼저 연거 나중
+		}
 
 //		EmpBean[] old_ar_eb = ar_eb; // 배열공간 = 4 , 배열공간 확보
 //		EmpBean[] new_ar_eb = new EmpBean[old_ar_eb.length + 1];
@@ -176,23 +240,66 @@ public class EmpData {
 //		}
 //		System.arraycopy(old_ar_eb, 0, new_ar_eb, 0, old_ar_eb.length); // 위 알고리즘을 arraycopy를 이용해 구현할수있음
 
-		EmpBean n_eb = new EmpBean(); // ★
-		n_eb.setEmpno(Integer.parseInt(empno));
-		n_eb.setEname(ename);
-		ar_eb.add(n_eb);
+//		EmpBean n_eb = new EmpBean(); // ★
+//		n_eb.setEmpno(Integer.parseInt(empno));
+//		n_eb.setEname(ename);
+//		ar_eb.add(n_eb);
 		// new_ar_eb[new_ar_eb.length - 1] = n_eb;
 
-		return ar_eb;
+		return cnt;
 	}
 
-	public List<EmpBean> del_emp(List<EmpBean> ar_eb, String idx) {
+	public int del_emp(String empno) {
+		Connection con = dbcon();
+		// 트랙젝션관리설정
+		// Autocommit 해제
+		PreparedStatement pstmt = null;
+		int cnt = 0;
+
+		try {
+			String sql = "DELETE FROM emp WHERE empno =?";
+			System.out.println("AutoCommit Setting false");
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(empno));
+			cnt = pstmt.executeUpdate();
+			if(cnt == 1) {
+				System.out.println("정상처리:commit 실횅");
+				con.commit();
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				System.out.println("비정상 종료:rollback 실행");
+				con.rollback();
+			
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}finally {
+				try {
+					System.out.println("AutoCommit Setting true");
+					con.setAutoCommit(true);
+					if(pstmt != null)
+					pstmt.close();
+					if(con !=null)
+					con.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		}
+
 		// 매개변수 -> ar_eb , idx
 //		EmpBean[] new_ar_eb = new EmpBean[ar_eb.size() - 1];
-		List<EmpBean> ar_eb_ll = new LinkedList<EmpBean>();
-		ar_eb_ll = ar_eb;
-		int i_idx = Integer.parseInt(idx);
+//		List<EmpBean> ar_eb_ll = new LinkedList<EmpBean>();
+//		ar_eb_ll = ar_eb;
+//		int i_idx = Integer.parseInt(idx);
 //		int n_idx = 0;
-		ar_eb.remove(i_idx - 1);
+//		ar_eb.remove(i_idx - 1);
 //		try {
 		/*
 		 * for (int i = 0; i < ar_eb.length; i++) { if (i_idx - 1 != i) { EmpBean eb =
@@ -206,20 +313,83 @@ public class EmpData {
 //			System.out.println("해당값이 존재하지않습니다.");
 //			return ar_eb;
 //		}
-		return ar_eb_ll;
+		return 0;
 	}
 
-	public List<EmpBean> mod_emp(List<EmpBean> ar_eb, String m_empno, String m_ename, String idx) {
-		int i_idx = Integer.parseInt(idx); // i_idx를 int로 바꾸기위해 선언
-		if (i_idx > ar_eb.size()) { // i_idx[0~3] 4개의 숫자중에서 없는숫자를 클릭하게되면 잘못된 index 입력
-			System.out.println("잘못된 index번호 입력");
-			return ar_eb;
-		} else {
-			EmpBean eb = new EmpBean();
-			eb.setEmpno(Integer.parseInt(m_empno)); // empno 숫
-			eb.setEname(m_ename);
-			ar_eb.set(i_idx - 1, eb);
-			return ar_eb;
+	public int mod_emp(String m_empno, String m_ename,String empno) {
+//		int i_idx = Integer.parseInt(idx); // i_idx를 int로 바꾸기위해 선언
+//		if (i_idx > ar_eb.size()) { // i_idx[0~3] 4개의 숫자중에서 없는숫자를 클릭하게되면 잘못된 index 입력
+//			System.out.println("잘못된 index번호 입력");
+//			return ar_eb;
+//		} else {
+//			EmpBean eb = new EmpBean();
+//			eb.setEmpno(Integer.parseInt(m_empno)); // empno 숫
+//			eb.setEname(m_ename);
+//			ar_eb.set(i_idx - 1, eb);
+//			return ar_eb;
+//		}
+		Connection con = dbcon();
+		PreparedStatement pstmt = null;
+		int cnt =0;
+		//String SQL = "update customers set pass=?, name=? where id=?";
+		try {
+			String sql ="UPDATE emp SET empno=?, ename=? WHERE empno=?";	
+			System.out.println("AutoCommit Setting false");
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(m_empno));
+			pstmt.setString(2,m_ename);
+			pstmt.setInt(3, Integer.parseInt(empno));
+			cnt = pstmt.executeUpdate();
+			
+			if(cnt ==1) {
+				System.out.println("정상처리 :Commit 실행");
+				con.commit();
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				System.out.println("비정상 종료: rollback실행");
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}finally {
+				try {
+					System.out.println("AutoCommit Setting true");
+					con.setAutoCommit(true);
+					if(pstmt != null)
+					pstmt.close();
+					if(con !=null)
+					con.close();
+				} catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
 		}
+	
+		return cnt;
 	}
+
+	// connetion생성 메소드 구성
+	public Connection dbcon() {
+		Connection con = null;
+		String url = "jdbc:oracle:thin:@127.0.0.1:1521:XE";
+		String user = "scott";
+		String password = "tiger";
+
+		try {
+			con = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return con;
+	}
+
 }
