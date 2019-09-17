@@ -11,6 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import javax.naming.spi.DirStateFactory.Result;
 
@@ -263,7 +264,7 @@ public class EmpData {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(empno));
 			cnt = pstmt.executeUpdate();
-			if(cnt == 1) {
+			if (cnt == 1) {
 				System.out.println("정상처리:commit 실횅");
 				con.commit();
 			}
@@ -273,23 +274,23 @@ public class EmpData {
 			try {
 				System.out.println("비정상 종료:rollback 실행");
 				con.rollback();
-			
+
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}finally {
+			} finally {
 				try {
 					System.out.println("AutoCommit Setting true");
 					con.setAutoCommit(true);
-					if(pstmt != null)
-					pstmt.close();
-					if(con !=null)
-					con.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (con != null)
+						con.close();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 			}
 		}
 
@@ -316,7 +317,7 @@ public class EmpData {
 		return 0;
 	}
 
-	public int mod_emp(String m_empno, String m_ename,String empno) {
+	public int mod_emp(String m_empno, String m_ename, String empno) {
 //		int i_idx = Integer.parseInt(idx); // i_idx를 int로 바꾸기위해 선언
 //		if (i_idx > ar_eb.size()) { // i_idx[0~3] 4개의 숫자중에서 없는숫자를 클릭하게되면 잘못된 index 입력
 //			System.out.println("잘못된 index번호 입력");
@@ -330,23 +331,23 @@ public class EmpData {
 //		}
 		Connection con = dbcon();
 		PreparedStatement pstmt = null;
-		int cnt =0;
-		//String SQL = "update customers set pass=?, name=? where id=?";
+		int cnt = 0;
+		// String SQL = "update customers set pass=?, name=? where id=?";
 		try {
-			String sql ="UPDATE emp SET empno=?, ename=? WHERE empno=?";	
+			String sql = "UPDATE emp SET empno=?, ename=? WHERE empno=?";
 			System.out.println("AutoCommit Setting false");
 			con.setAutoCommit(false);
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, Integer.parseInt(m_empno));
-			pstmt.setString(2,m_ename);
+			pstmt.setString(2, m_ename);
 			pstmt.setInt(3, Integer.parseInt(empno));
 			cnt = pstmt.executeUpdate();
-			
-			if(cnt ==1) {
+
+			if (cnt == 1) {
 				System.out.println("정상처리 :Commit 실행");
 				con.commit();
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -356,25 +357,59 @@ public class EmpData {
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}finally {
+			} finally {
 				try {
 					System.out.println("AutoCommit Setting true");
 					con.setAutoCommit(true);
-					if(pstmt != null)
-					pstmt.close();
-					if(con !=null)
-					con.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (con != null)
+						con.close();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				
+
 			}
 		}
-	
+
 		return cnt;
 	}
 
+	public int loginEmp(int empno, String ename) {
+		Connection con = dbcon();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		// EmpBean eb = null;
+		int cnt = 0;
+
+		String sql = "SELECT count(*) FROM emp WHERE empno = ? and ename = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, empno);
+			pstmt.setString(2, ename);
+			rs = pstmt.executeQuery();
+			rs.next();
+			// 검색된 count 숫자를 cnt에 대입(로그인이 성공했으면 1, 아니면 0)
+			cnt = rs.getInt(1);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return cnt;
+	}
 	// connetion생성 메소드 구성
 	public Connection dbcon() {
 		Connection con = null;
@@ -392,4 +427,80 @@ public class EmpData {
 		return con;
 	}
 
+	public int ins_emp_batch(String empno, String ename, int mgr, double sal) { // 사원추가
+
+		Connection con = dbcon();
+		String sql = "INSERT INTO emp_batch(empno,ename,mgr,sal) "; // values 때문에 " 한칸띄우고
+		String sql2 = "VALUES(?,?,?,?)";
+		int cnt = 0; // insert가 제대로 되었는지 확인하기위해
+		PreparedStatement pstmt = null;
+		Random rd = new Random();
+		try {
+
+			con.setAutoCommit(false);
+			pstmt = con.prepareStatement(sql + sql2);
+			int[] batch_cnt = null;
+			// 반복문 통해서 10만개 자료 무작위 입력
+			for (int i = 0; i < 100000; i++) {
+				int a = rd.nextInt(10000); // 랜덤함수 객체
+
+				pstmt.setInt(1, a);
+				pstmt.setString(2, ename + "_" + (Integer.toString(a)));
+				pstmt.setInt(3, mgr);
+				pstmt.setDouble(4, sal);
+				// 특정 값이 세팅되면 batch 시킴
+				pstmt.addBatch();
+				pstmt.clearParameters();
+
+				// 1만번 배치마다 쿼리문 실행할 수 있 도록 구성
+				if (i % 10000 == 0) {
+					batch_cnt = pstmt.executeBatch();
+					pstmt.clearBatch();
+				}
+			}
+			batch_cnt = pstmt.executeBatch();
+			con.commit();
+			
+			// insert문 실행
+			cnt = 0; // 프리페어드스테이먼트는 매개값을 주지않고
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} finally {
+
+			try {
+				if (pstmt != null)
+					pstmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} // 먼저 연거 나중
+		}
+
+//		EmpBean[] old_ar_eb = ar_eb; // 배열공간 = 4 , 배열공간 확보
+//		EmpBean[] new_ar_eb = new EmpBean[old_ar_eb.length + 1];
+//		for (int i = 0; i < old_ar_eb.length; i++) {
+//			EmpBean eb = new EmpBean();
+//
+//			eb.setEmpno(old_ar_eb[i].getEmpno());
+//			eb.setEname(old_ar_eb[i].getEname());
+//		}
+//		System.arraycopy(old_ar_eb, 0, new_ar_eb, 0, old_ar_eb.length); // 위 알고리즘을 arraycopy를 이용해 구현할수있음
+
+//		EmpBean n_eb = new EmpBean(); // ★
+//		n_eb.setEmpno(Integer.parseInt(empno));
+//		n_eb.setEname(ename);
+//		ar_eb.add(n_eb);
+		// new_ar_eb[new_ar_eb.length - 1] = n_eb;
+
+		return cnt;
+	}
 }

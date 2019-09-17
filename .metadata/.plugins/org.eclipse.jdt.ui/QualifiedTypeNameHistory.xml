@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="interfacesample.Buggerclerk"/>
-    <fullyQualifiedTypeName name="interfacesample.Bookorder"/>
-    <fullyQualifiedTypeName name="interfacesample.SandCook"/>
-    <fullyQualifiedTypeName name="interfacesample.Sandpeople"/>
-    <fullyQualifiedTypeName name="interfacesample.PartTimer"/>
-    <fullyQualifiedTypeName name="interfacesample.ClientSand"/>
-    <fullyQualifiedTypeName name="exectionsample.SampleException"/>
-    <fullyQualifiedTypeName name="java.awt.image.SampleModel"/>
-    <fullyQualifiedTypeName name="java.lang.Throwable"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.Executable"/>
-    <fullyQualifiedTypeName name="view.Samplee"/>
-    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
-    <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="javax.print.attribute.HashAttributeSet"/>
     <fullyQualifiedTypeName name="java.sql.Array"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -45,19 +32,32 @@
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
     <fullyQualifiedTypeName name="java.sql.Statement"/>
-    <fullyQualifiedTypeName name="domain.EmpBean"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.util.Hashtable"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="view.Hash"/>
     <fullyQualifiedTypeName name="hash.Hash"/>
-    <fullyQualifiedTypeName name="domain.EmpData"/>
     <fullyQualifiedTypeName name="domain.DeptBean"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="domain.DeptData"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.net.ServerSocket"/>
+    <fullyQualifiedTypeName name="java.net.InetSocketAddress"/>
+    <fullyQualifiedTypeName name="javax.print.DocFlavor.INPUT_STREAM"/>
+    <fullyQualifiedTypeName name="java.io.UTFDataFormatException"/>
+    <fullyQualifiedTypeName name="java.io.OutputStream"/>
+    <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+    <fullyQualifiedTypeName name="java.net.Socket"/>
+    <fullyQualifiedTypeName name="java.io.InputStream"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="org.apache.poi.util.CommonsLogger"/>
+    <fullyQualifiedTypeName name="view.Commenmethod"/>
+    <fullyQualifiedTypeName name="domain.EmpBean"/>
+    <fullyQualifiedTypeName name="view.Login"/>
+    <fullyQualifiedTypeName name="domain.EmpData"/>
 </qualifiedTypeNameHistroy>
