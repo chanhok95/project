@@ -44,6 +44,7 @@ public class TestServer {
 				msg2 = input_msg();
 				bytes = msg2.getBytes("UTF-8");
 				os.write(bytes);
+				
 				os.close();
 				
 				
