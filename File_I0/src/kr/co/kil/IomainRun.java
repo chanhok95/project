@@ -13,7 +13,7 @@ public class IomainRun {
 		File file = new File("c:/Test/Hello.txt");
 		File file2 = new File("c:/Test/Hello2.txt");
 
-		if (!file.exists()) {
+		if (!file.exists()) {		//exists 파일의 존재여부를 알수있음 반환결과= boolean (true,false)
 			// ! = 파일이 없으면 파일 생성
 			try {
 				System.out.println("파일1 생성");
@@ -33,9 +33,9 @@ public class IomainRun {
 			e.printStackTrace();
 		}
 		// 외부 파일 읽어오기
-		FileInputStream fis = null;
+		FileInputStream fis = null;	//inputstream 데이터를 읽어들여오고
 		// 외부 파일 전달하기
-		FileOutputStream fos = null;
+		FileOutputStream fos = null;//output 데이터를 써서 보내는 
 		try {
 			fis = new FileInputStream(file);
 			fos = new FileOutputStream(file2);

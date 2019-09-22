@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar\hyungiRentCar"/>
 		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64"/>
 		<item value="C:\Users\Administrator\git\repository\.git"/>
 		<item value="C:\Users\Administrator\git\repository"/>
@@ -25,5 +26,16 @@
 		<item key="DIALOG_WIDTH" value="500"/>
 		<item key="DIALOG_HEIGHT" value="402"/>
 		<item key="TOGGLE_SELECTED" value="false"/>
+	</section>
+	<section name="ExternalProjectImportWizard">
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="C:\Users\Administrator\Desktop\hyungiRentCar\hyungiRentCar"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
 	</section>
 </section>

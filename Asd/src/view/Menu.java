@@ -71,7 +71,7 @@ public class Menu extends Commenmethod {
 			} else if (menu.equals("2")) {
 				second_menu();
 
-			} else if (menu.equals("3") && admin_code == 99) {
+			} else if (menu.equals("3") && admin_code == 99) {		// admin만 접근가능
 				third_menu();
 
 			} else if (menu.equals("4") && admin_code == 99) {
@@ -137,6 +137,7 @@ public class Menu extends Commenmethod {
 				// c를 입력했을때 객체 생성
 				ExcelPrint ep = new ExcelPrint();
 				ep.setXls(new EmpData().def_data());
+		//	
 			} else if (menu.equals("b")) {
 				boolean code = true;
 				while (code) {
@@ -190,7 +191,7 @@ public class Menu extends Commenmethod {
 
 		int cnt = ed.ins_emp(empno, ename, Integer.parseInt(mgr), Double.parseDouble(sal));
 		System.out.println(cnt + "명의 사원이 입력되었습니다.");
-		SearchHR shr = new SearchHR();
+		SearchHR shr = new SearchHR();  
 //		shr.all_View(ar_eb);
 	}
 
