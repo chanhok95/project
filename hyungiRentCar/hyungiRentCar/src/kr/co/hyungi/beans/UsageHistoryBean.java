@@ -3,14 +3,15 @@ package kr.co.hyungi.beans;
 public class UsageHistoryBean {
 	private int rentNo; //렌트번호
 	private int carNo;	 // 차번호
-	private int phoneNo;	//폰번호
-	private int licenseNo;	//면허번호
+	private String phoneNo;	//폰번호
+	private String licenseNo;	//면허번호
 	private String rentStartDate;	//대여일
 	private String rentEndDate; // 반납일
 	private String rentFinal;
 	private int rentCost;	//결제된 금액
 	private String addCost;	//반납후 결제된 실제금액
 	private String state;
+
 	public int getRentNo() {
 		return rentNo;
 	}
@@ -23,16 +24,16 @@ public class UsageHistoryBean {
 	public void setCarNo(int carNo) {
 		this.carNo = carNo;
 	}
-	public int getPhoneNo() {
+	public String getPhoneNo() {
 		return phoneNo;
 	}
-	public void setPhoneNo(int phoneNo) {
+	public void setPhoneNo(String phoneNo) {
 		this.phoneNo = phoneNo;
 	}
-	public int getLicenseNo() {
+	public String getLicenseNo() {
 		return licenseNo;
 	}
-	public void setLicenseNo(int licenseNo) {
+	public void setLicenseNo(String licenseNo) {
 		this.licenseNo = licenseNo;
 	}
 	public String getRentStartDate() {

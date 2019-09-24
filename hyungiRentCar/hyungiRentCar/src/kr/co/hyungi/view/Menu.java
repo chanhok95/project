@@ -6,7 +6,7 @@ import kr.co.hyungi.beans.MemberBean;
 
 public class Menu extends CommonMethod{
 	public void menu() {
-		
+		String menu=null;
 		boolean menuBool = true;
 		while(menuBool) {
 			System.out.println("***************************************************************");
@@ -16,21 +16,22 @@ public class Menu extends CommonMethod{
 			String input = inputMsg();
 			
 			if(input.equals("1")) {
-				//rent();
-				Rent re = new Rent();
-				re.phone_add(); break;
+				new Rent().rent();
+				break;
 			}
 			else if(input.equals("2")) {
 				//modifyRent();
-				Rent re = new Rent();
-				re.car_choice(); break;
+//				Rent re = new Rent();
+//				re.car_choice(); break;
 			}
 			else if(input.equals("3")) {
 				//cancelRent();
-				Rent re = new Rent();
-				re.rent_cancle(); break;
+				new Rent().rentCancel();
+				
+				break;
 			}
 			else if(input.equals("4")) {
+			new Rent().usedState();
 				//return();
 			}
 			else if(input.equals("5")) {
@@ -41,5 +42,6 @@ public class Menu extends CommonMethod{
 			}
 			
 		}
+
 	}
 }
