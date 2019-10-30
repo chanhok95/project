@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="exit"/>
+		<item key="selection" value="&gt;"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="&gt;"/>
+			<item value="all"/>
+			<item value="13"/>
+			<item value="byte"/>
+			<item value="13byte"/>
+			<item value="carall"/>
+			<item value="cardate"/>
+			<item value="car"/>
+			<item value="회원"/>
+			<item value="회원전체"/>
+			<item value="■"/>
 			<item value="exit"/>
 			<item value="list&lt;member"/>
 			<item value="del_history"/>
 			<item value="isPhone"/>
-			<item value="cb"/>
-			<item value="ar_cb"/>
-			<item value="ar_ch"/>
-			<item value="Searchhistory"/>
-			<item value="Search"/>
-			<item value="mem"/>
-			<item value="mem_view"/>
-			<item value="cancle"/>
-			<item value="ar_"/>
-			<item value="a"/>
-			<item value="getp"/>
 		</list>
 		<list key="replacehistory">
 			<item value="cv"/>
@@ -34,10 +34,10 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1321"/>
+		<item key="DIALOG_X_ORIGIN" value="680"/>
 		<item key="DIALOG_Y_ORIGIN" value="304"/>
-		<item key="DIALOG_WIDTH" value="288"/>
-		<item key="DIALOG_HEIGHT" value="391"/>
-		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		<item key="DIALOG_WIDTH" value="340"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 </section>

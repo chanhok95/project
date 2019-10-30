@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar_Ver02"/>
+		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\Rent"/>
+		<item value="C:\Users\Administrator\Desktop\Rent"/>
+		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRent"/>
+		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCarSum2"/>
+		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCarSum"/>
+		<item value="K:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar\src"/>
 		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar\hyungiRentCar"/>
 		<item value="F:\eclipse-jee-2019-06-R-win32-x86_64"/>
 		<item value="C:\Users\Administrator\git\repository\.git"/>
@@ -31,14 +38,36 @@
 		<item key="TOGGLE_SELECTED" value="false"/>
 	</section>
 	<section name="ExternalProjectImportWizard">
-		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="false"/>
-		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID" value="true"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="true"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value=""/>
+			<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar_Ver06"/>
+			<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar_Ver05"/>
+			<item value="C:\Users\Administrator\Desktop\hyungiRentCar_Ver05"/>
+			<item value="D:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar_Ver03"/>
+			<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar_Ver03"/>
+			<item value="F:\eclipse-jee-2019-06-R-win32-x86_64\hyungiRentCar_Ver02"/>
 			<item value="C:\Users\Administrator\Desktop\hyungiRentCar\hyungiRentCar"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="C:\Users\aaa\Desktop\hyungiRentCar_VerFinal.zip"/>
 			<item value=""/>
 		</list>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item key="ShowStatusLine" value="true"/>
+		<item key="History" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode/&gt;&#x0D;&#x0A;&lt;/History&gt;"/>
+		<item key="ShowDerived" value="false"/>
+		<item key="FilterByLocation" value="false"/>
+		<item key="WorkingSet" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;"/>
+		<section name="DialogBoundsSettings">
+			<item key="DIALOG_HEIGHT" value="500"/>
+			<item key="DIALOG_WIDTH" value="600"/>
+			<item key="DIALOG_X_ORIGIN" value="668"/>
+			<item key="DIALOG_Y_ORIGIN" value="195"/>
+			<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
+		</section>
 	</section>
 </section>

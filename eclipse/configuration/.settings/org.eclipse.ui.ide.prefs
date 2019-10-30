@@ -1,6 +1,6 @@
 MAX_RECENT_WORKSPACES=10
-RECENT_WORKSPACES=F\:\\eclipse-jee-2019-06-R-win32-x86_64\nD\:\\eclipse-jee-2019-06-R-win32-x86_64\nE\:\\eclipse-jee-2019-06-R-win32-x86_64
+RECENT_WORKSPACES=F\:\\ch\\MVC\\workspace\nF\:\\eclipse-jee-2019-06-R-win32-x86_64\nF\:\\ch\\MVC\\apache-tomcat-8.5.46\nF\:\\javaWork\\MVC\\apache-tomcat-8.5.46\nF\:\\javaWork\\workspace\nF\:\\\uC218\uC5C5\uB0B4\uC6A9\\MVC\\apache-tomcat-8.5.46\nF\:\\cho\\MVC\\apache-tomcat-8.5.46\nF\:\\ch\\MVC\\workspace\\apache-tomcat-8.5.46\nD\:\\\uC218\uC5C5\uB0B4\uC6A9\\MVC\\apache-tomcat-8.5.46\nD\:\\eclipse-jee-2019-06-R-win32-x86_64
 RECENT_WORKSPACES_PROTOCOL=3
-SHOW_RECENT_WORKSPACES=false
-SHOW_WORKSPACE_SELECTION_DIALOG=true
+SHOW_RECENT_WORKSPACES=true
+SHOW_WORKSPACE_SELECTION_DIALOG=false
 eclipse.preferences.version=1
